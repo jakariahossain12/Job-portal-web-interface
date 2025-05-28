@@ -1,0 +1,12 @@
+.active{
+    border-bottom: 2px solid #3c65f5;
+    color: #3c65f5;
+}
+ul > li{
+font-weight: 500;
+
+}
+ul > li:hover{
+    border-bottom: 2px solid #3c65f5;
+    color: #3c65f5;
+}
