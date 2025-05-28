@@ -13,7 +13,18 @@ const SignUp = () => {
     );
     newUser(email, password)
       .then((res) => {
-        console.log(res);
+          console.log(res);
+          const updateInfo = {
+            displayName: name,
+            photoURL:photo
+          };
+          updateUserInfo(updateInfo)
+              .then(() => {
+              
+              })
+              .catch(error => {
+              console.log(error);
+          })
       })
       .catch((error) => {
         console.log(error);
