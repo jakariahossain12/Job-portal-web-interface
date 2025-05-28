@@ -1,11 +1,12 @@
-import React, { useContext } from 'react';
+import React, { use, useContext } from 'react';
 import Headroom from "react-headroom";
 import { NavLink } from 'react-router';
 import Sticky from "react-stickynode";
 import "./Navbar.css"
-import { AuthContext } from '../../context/Context';
+import { AuthContext, ImgContext } from '../../context/Context';
 const NavBar = () => {
   const { user, userSignOut } = useContext(AuthContext);
+  const {imgUrl}=use(ImgContext)
     const links = <>
         <li><NavLink to={'/'}>Home</NavLink></li>
         <li><NavLink to={'/jobs'}>Jobs</NavLink></li>
@@ -72,9 +73,14 @@ const NavBar = () => {
                 <img
                   alt=""
                   className="w-12 h-12 rounded-full ring-2 ring-offset-4 dark:bg-gray-500 dark:ring-violet-600 dark:ring-offset-gray-100"
-                  src={user?.photoURL}
+                  src={user?.photoURL || (user && imgUrl)}
                 />
-                <button onClick={handleSignOut} className='btn ml-3 btn-primary text-white'>sign out</button>
+                <button
+                  onClick={handleSignOut}
+                  className="btn ml-3 btn-primary text-white"
+                >
+                  sign out
+                </button>
               </div>
             </div>
           </div>

@@ -1,8 +1,9 @@
-import React, { useContext } from "react";
+import React, { use, useContext } from "react";
 import { Formik } from "formik";
-import { AuthContext } from "../../context/Context";
+import { AuthContext, ImgContext } from "../../context/Context";
 const SignUp = () => {
-  const { newUser, updateUserInfo } = useContext(AuthContext);
+    const { newUser, updateUserInfo } = useContext(AuthContext);
+    const {setImgUrl} = use(ImgContext)
   const handleSignUP = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -20,6 +21,7 @@ const SignUp = () => {
           };
           updateUserInfo(updateInfo)
               .then(() => {
+                setImgUrl(photo)
               alert('sign up successfully')
               })
               .catch(error => {
