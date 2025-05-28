@@ -20,7 +20,7 @@ const SignUp = () => {
           };
           updateUserInfo(updateInfo)
               .then(() => {
-              
+              alert('sign up successfully')
               })
               .catch(error => {
               console.log(error);
