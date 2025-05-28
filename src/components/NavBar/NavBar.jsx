@@ -58,7 +58,11 @@ const NavBar = () => {
                 <ul className="menu menu-horizontal px-1">{links}</ul>
               </div>
               <div className="navbar-end">
-                <a className="btn">Button</a>
+                <img
+                  alt=""
+                  className="w-12 h-12 rounded-full ring-2 ring-offset-4 dark:bg-gray-500 dark:ring-violet-600 dark:ring-offset-gray-100"
+                  src="https://source.unsplash.com/40x40/?portrait?1"
+                />
               </div>
             </div>
           </div>
