@@ -7,12 +7,24 @@ import { AuthContext, ImgContext } from '../../context/Context';
 const NavBar = () => {
   const { user, userSignOut } = useContext(AuthContext);
   const {imgUrl}=use(ImgContext)
-    const links = <>
-        <li><NavLink to={'/'}>Home</NavLink></li>
-        <li><NavLink to={'/jobs'}>Jobs</NavLink></li>
-        <li><NavLink to={'/profile'}>Profile</NavLink></li>
-        
-  </>
+    const links = (
+      <>
+        <li>
+          <NavLink to={"/"}>Home</NavLink>
+        </li>
+        <li>
+          <NavLink to={"/jobs"}>Jobs</NavLink>
+        </li>
+        <li>
+          <NavLink to={"/profile"}>Profile</NavLink>
+        </li>
+        {user && (
+          <li>
+            <NavLink to={"/my-application"}>MyApplications</NavLink>
+          </li>
+        )}
+      </>
+    );
   
   const handleSignOut = () => {
     userSignOut()
