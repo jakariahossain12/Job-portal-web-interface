@@ -1,10 +1,12 @@
 import { motion } from "motion/react";
 
-import React from "react";
+import React, { use } from "react";
 import { NavLink } from "react-router";
 import JobPostCard from "../Job Post Card/JobPostCard";
 
-const Latest_Jobs_Post = () => {
+const Latest_Jobs_Post = ({ jobsPromise }) => {
+  const jobsData = use(jobsPromise);
+
   return (
     <div className="w-11/12 mx-auto py-24 space-y-10">
       <div className=" space-y-3">
@@ -74,13 +76,9 @@ const Latest_Jobs_Post = () => {
       </div>
       {/* all job post item */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-center justify-center ">
-        <JobPostCard></JobPostCard>
-        <JobPostCard></JobPostCard>
-        <JobPostCard></JobPostCard>
-        <JobPostCard></JobPostCard>
-        <JobPostCard></JobPostCard>
-        <JobPostCard></JobPostCard>
-        <JobPostCard></JobPostCard>
+        {jobsData.map((data) => (
+          <JobPostCard key={data._id} data={data}></JobPostCard>
+        ))}
       </div>
     </div>
   );
