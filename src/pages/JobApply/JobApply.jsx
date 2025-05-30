@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router';
 import UserAuth from '../../hooks/UseAuth/UseAuth';
+import axios from 'axios';
 
 const JobApply = () => {
   const { id } = useParams();
@@ -15,6 +16,16 @@ const JobApply = () => {
     applicantInfo.job_id = id;
     
     console.log(applicantInfo);
+    axios
+      .post("http://localhost:3000/application", applicantInfo)
+      .then((res) => {
+        if (res.data.insertedId) {
+          return alert('apply successfully Complete')
+        };
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
     return (
       <section className="p-6 dark:bg-gray-100 dark:text-gray-900">
