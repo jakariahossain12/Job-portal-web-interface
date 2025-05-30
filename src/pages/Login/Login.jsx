@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../context/Context';
+import { Link } from 'react-router';
 
 const Login = () => {
     const {userLogin}=useContext(AuthContext)
@@ -73,13 +74,12 @@ const Login = () => {
               </div>
               <p className="px-6 text-sm text-center dark:text-gray-600">
                 Don't have an account yet?
-                <a
-                  rel="noopener noreferrer"
-                  href="#"
+                <Link
+                  to={'/sign-up'}
                   className="hover:underline dark:text-violet-600"
                 >
                   Sign up
-                </a>
+                </Link>
                 .
               </p>
             </div>

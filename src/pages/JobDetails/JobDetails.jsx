@@ -1,5 +1,5 @@
 import React from "react";
-import { useLoaderData } from "react-router";
+import { Link, useLoaderData } from "react-router";
 
 const JobDetails = () => {
   const job = useLoaderData();
@@ -84,12 +84,12 @@ const JobDetails = () => {
         </div>
 
         <div className="mt-8 text-center">
-          <a
-            href={`mailto:${job.hr_email}?subject=Application for ${job.title}`}
+          <Link 
+            to={`/job-apply/${job?._id}`}
             className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-2xl transition duration-300"
           >
             Apply Now
-          </a>
+          </Link>
         </div>
       </div>
     </div>
