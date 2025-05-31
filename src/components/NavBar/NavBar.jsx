@@ -19,9 +19,14 @@ const NavBar = () => {
           <NavLink to={"/profile"}>Profile</NavLink>
         </li>
         {user && (
-          <li>
-            <NavLink to={"/my-application"}>MyApplications</NavLink>
-          </li>
+          <>
+            <li>
+              <NavLink to={"/my-application"}>MyApplications</NavLink>
+            </li>
+            <li>
+              <NavLink to={"/my-job-post"}>MyJobPost</NavLink>
+            </li>
+          </>
         )}
 
         {user && (
@@ -29,9 +34,6 @@ const NavBar = () => {
             <NavLink to={"/job-add"}>Job Add</NavLink>
           </li>
         )}
-
-
-
       </>
     );
   

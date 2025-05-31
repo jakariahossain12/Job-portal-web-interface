@@ -9,6 +9,7 @@ import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import JobApply from '../pages/JobApply/JobApply';
 import MyApplications from '../pages/MyApplications\'/MyApplications';
 import JobAdd from '../pages/JobAdd/JobAdd';
+import MyJobPost from '../pages/MyJobsPost/MyJobPost';
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -16,7 +17,7 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        loader:()=>fetch("http://localhost:3000/jobs"),
+        loader: () => fetch("http://localhost:3000/jobs"),
         Component: Home,
       },
       {
@@ -38,20 +39,35 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: 'job-apply/:id',
-        element:<PrivateRoute><JobApply></JobApply></PrivateRoute>
+        path: "job-apply/:id",
+        element: (
+          <PrivateRoute>
+            <JobApply></JobApply>
+          </PrivateRoute>
+        ),
       },
-      
+
       {
-        path: 'my-application',
-        element:<PrivateRoute><MyApplications></MyApplications></PrivateRoute>
+        path: "my-application",
+        element: (
+          <PrivateRoute>
+            <MyApplications></MyApplications>
+          </PrivateRoute>
+        ),
       },
-      
+
       {
-        path: 'job-add',
-        element:<PrivateRoute><JobAdd></JobAdd></PrivateRoute>
+        path: "job-add",
+        element: (
+          <PrivateRoute>
+            <JobAdd></JobAdd>
+          </PrivateRoute>
+        ),
       },
-      
+      {
+        path: "my-job-post",
+        element:<PrivateRoute><MyJobPost></MyJobPost></PrivateRoute>
+      },
     ],
   },
 ]);
