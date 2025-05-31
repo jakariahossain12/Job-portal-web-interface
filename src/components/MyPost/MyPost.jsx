@@ -13,6 +13,7 @@ const MyPost = ({ myJobPostPromise }) => {
               <th>Company</th>
               <th>Job</th>
               <th>deadLine</th>
+              <th>application_count</th>
               <th></th>
             </tr>
           </thead>
@@ -38,8 +39,12 @@ const MyPost = ({ myJobPostPromise }) => {
                 </td>
                 <td>{post?.title}</td>
                 <td>{post?.applicationDeadline}</td>
+                <td>{post?.application_count}</td>
                 <th>
-                  <Link to={`/view-applicant/${post._id}`} className="btn btn-ghost btn-xs">
+                  <Link
+                    to={`/view-applicant/${post._id}`}
+                    className="btn btn-ghost btn-xs"
+                  >
                     view Applicant
                   </Link>
                 </th>
