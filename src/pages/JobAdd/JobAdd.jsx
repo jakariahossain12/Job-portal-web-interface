@@ -1,12 +1,35 @@
+import axios from 'axios';
 import React from 'react';
+import UserAuth from '../../hooks/UseAuth/UseAuth';
 
 const JobAdd = () => {
+  const {user}=UserAuth()
     const handleSubmit = (e) => {
         e.preventDefault()
         const form = e.target;
         const formData = new FormData(form);
         const jobInfo = Object.fromEntries(formData.entries());
-        console.log(jobInfo);
+      const { min, max, currency, ...newJob } = jobInfo;
+
+      // set salary range in a objcet
+      newJob.salaryRange = { min, max, currency };
+      // process convert a array 
+      newJob.requirements = newJob.requirements.split(',').map(res => res.trim())
+      newJob.responsibilities = newJob.responsibilities.split(',').map(res => res.trim())
+
+      newJob.status = "active";
+      console.log(newJob);
+
+      axios
+        .post("http://localhost:3000/jobs", newJob)
+        .then((res) => {
+          if (res.data.insertedId) {
+            return alert('job post successfully')
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
     return (
       <form
@@ -54,14 +77,14 @@ const JobAdd = () => {
               required
             />
             <input
-              name="salaryMin"
+              name="min"
               type="number"
               placeholder="Min Salary"
               className="input"
               required
             />
             <input
-              name="salaryMax"
+              name="max"
               type="number"
               placeholder="Max Salary"
               className="input"
@@ -85,6 +108,7 @@ const JobAdd = () => {
               name="hr_email"
               placeholder="HR Email"
               type="email"
+              value={user?.email}
               className="input"
             />
           </div>

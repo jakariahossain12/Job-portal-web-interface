@@ -16,8 +16,7 @@ const JobApply = () => {
     applicantInfo.job_id = id;
     
     console.log(applicantInfo);
-    axios
-      .post("http://localhost:3000/application", applicantInfo)
+    axios.post("http://localhost:3000/application", applicantInfo)
       .then((res) => {
         if (res.data.insertedId) {
           return alert('apply successfully Complete')

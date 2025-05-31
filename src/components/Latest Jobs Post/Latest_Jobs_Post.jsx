@@ -1,12 +1,9 @@
 import { motion } from "motion/react";
 
-import React, { use } from "react";
 import { NavLink } from "react-router";
 import JobPostCard from "../Job Post Card/JobPostCard";
 
-const Latest_Jobs_Post = ({ jobsPromise }) => {
-  const jobsData = use(jobsPromise);
-
+const Latest_Jobs_Post = ({ jobsData }) => {
   return (
     <div className="w-11/12 mx-auto py-24 space-y-10">
       <div className=" space-y-3">
