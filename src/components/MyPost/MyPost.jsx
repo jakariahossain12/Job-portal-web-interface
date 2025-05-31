@@ -1,4 +1,5 @@
 import React, { use } from 'react';
+import { Link } from 'react-router';
 
 const MyPost = ({ myJobPostPromise }) => {
     const posts = use(myJobPostPromise);
@@ -38,7 +39,9 @@ const MyPost = ({ myJobPostPromise }) => {
                 <td>{post?.title}</td>
                 <td>{post?.applicationDeadline}</td>
                 <th>
-                  <button className="btn btn-ghost btn-xs">details</button>
+                  <Link to={`/view-applicant/${post._id}`} className="btn btn-ghost btn-xs">
+                    view Applicant
+                  </Link>
                 </th>
               </tr>
             ))}
